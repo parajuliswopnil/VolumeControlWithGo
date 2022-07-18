@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/rpc"
+	"os"
 )
 
 type VolumeData struct {
@@ -11,6 +12,8 @@ type VolumeData struct {
 }
 
 func main() {
+    argsWithoutProg := os.Args[1:]
+
 	var reply VolumeData
 	var getReply VolumeData
 
@@ -20,7 +23,7 @@ func main() {
 		log.Fatal("error in connection")
 	}
 
-	volume := VolumeData{VolumeInPercentage: "50"}
+	volume := VolumeData{VolumeInPercentage: argsWithoutProg[0]}
 	client.Call("API.SetVolume", volume, &reply)
 
 	client.Call("API.GetVolume", "get", &getReply)
