@@ -1,33 +1,33 @@
-package main
+// package main
 
-import (
-	"fmt"
-	"log"
-	"net/rpc"
-	"os"
-)
+// import (
+// 	"fmt"
+// 	"log"
+// 	"net/rpc"
+// 	"os"
+// )
 
-type VolumeData struct {
-	VolumeInPercentage string
-}
+// type VolumeData struct {
+// 	VolumeInPercentage string
+// }
 
-func main() {
-    argsWithoutProg := os.Args[1:]
+// // func main() {
+// //     argsWithoutProg := os.Args[1:]
 
-	var reply VolumeData
-	var getReply VolumeData
+// // 	var reply VolumeData
+// // 	var getReply VolumeData
 
-	client, err := rpc.DialHTTP("tcp", "localhost:4040")
+// // 	client, err := rpc.DialHTTP("tcp", "localhost:4040")
 
-	if err != nil {
-		log.Fatal("error in connection")
-	}
+// // 	if err != nil {
+// // 		log.Fatal("error in connection")
+// // 	}
 
-	volume := VolumeData{VolumeInPercentage: argsWithoutProg[0]}
-	client.Call("API.SetVolume", volume, &reply)
+// // 	volume := VolumeData{VolumeInPercentage: argsWithoutProg[0]}
+// // 	client.Call("API.SetVolume", volume, &reply)
 
-	client.Call("API.GetVolume", "get", &getReply)
+// // 	client.Call("API.GetVolume", "get", &getReply)
 
-	fmt.Println(getReply)
+// // 	fmt.Println(getReply)
 
-}
+// // }
